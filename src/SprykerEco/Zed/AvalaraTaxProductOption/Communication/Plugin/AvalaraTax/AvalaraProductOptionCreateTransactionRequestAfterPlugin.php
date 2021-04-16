@@ -5,7 +5,7 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace SprykerEco\Zed\AvalaraTaxProductOption\Communication\AvalaraTax;
+namespace SprykerEco\Zed\AvalaraTaxProductOption\Communication\Plugin\AvalaraTax;
 
 use Generated\Shared\Transfer\AvalaraCreateTransactionResponseTransfer;
 use Generated\Shared\Transfer\CalculableObjectTransfer;
