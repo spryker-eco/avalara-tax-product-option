@@ -85,6 +85,16 @@ abstract class AbstractProductOptionAvalaraTaxCalculator implements ProductOptio
             $taxRateSum += $transactionLineDetailModel->rate ?? 0.0;
         }
 
-        return $taxRateSum;
+        return $this->convertToPercents($taxRateSum);
+    }
+
+    /**
+     * @param float $number
+     *
+     * @return float
+     */
+    protected function convertToPercents(float $number): float
+    {
+        return $number * 100.0;
     }
 }
