@@ -26,7 +26,7 @@ class AvalaraLineItemMapper implements AvalaraLineItemMapperInterface
     /**
      * @uses \Avalara\TransactionAddressType::C_SHIPTO
      */
-    protected const AVALARA_SHIPPING_ADDRESS_TYPE = 'ShipTo';
+    protected const AVALARA_SHIP_TO_ADDRESS_TYPE = 'ShipTo';
 
     /**
      * @var \SprykerEco\Zed\AvalaraTaxProductOption\Dependency\Facade\AvalaraTaxProductOptionToMoneyFacadeInterface
@@ -68,7 +68,7 @@ class AvalaraLineItemMapper implements AvalaraLineItemMapperInterface
             return $avalaraLineItemTransfer;
         }
 
-        $avalaraShippingAddressTransfer = (new AvalaraAddressTransfer())->setType(static::AVALARA_SHIPPING_ADDRESS_TYPE);
+        $avalaraShippingAddressTransfer = (new AvalaraAddressTransfer())->setType(static::AVALARA_SHIP_TO_ADDRESS_TYPE);
         $avalaraShippingAddressTransfer = $this->mapShipmentTransferToAvalaraAddressTransfer(
             $itemTransfer->getShipmentOrFail(),
             $avalaraShippingAddressTransfer

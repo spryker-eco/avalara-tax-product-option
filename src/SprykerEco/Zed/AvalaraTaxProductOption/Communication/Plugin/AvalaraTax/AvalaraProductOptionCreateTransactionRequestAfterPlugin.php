@@ -18,6 +18,12 @@ use SprykerEco\Zed\AvalaraTaxExtension\Dependency\Plugin\CreateTransactionReques
 class AvalaraProductOptionCreateTransactionRequestAfterPlugin extends AbstractPlugin implements CreateTransactionRequestAfterPluginInterface
 {
     /**
+     * Specification:
+     * - Calculates taxes for `ProductOptions` based on `AvalaraCreateTransactionResponseTransfer`.
+     * - Sets tax data to `CalculableObjectTransfer.items.productOptions`.
+     *
+     * @api
+     *
      * @param \Generated\Shared\Transfer\CalculableObjectTransfer $calculableObjectTransfer
      * @param \Generated\Shared\Transfer\AvalaraCreateTransactionResponseTransfer $avalaraCreateTransactionResponseTransfer
      *

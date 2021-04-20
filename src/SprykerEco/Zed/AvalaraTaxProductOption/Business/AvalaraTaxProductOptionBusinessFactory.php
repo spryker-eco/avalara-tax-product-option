@@ -85,7 +85,7 @@ class AvalaraTaxProductOptionBusinessFactory extends AbstractBusinessFactory
      *
      * @return \SprykerEco\Zed\AvalaraTaxProductOption\Business\StrategyResolver\ProductOptionTaxCalculatorStrategyResolverInterface
      */
-    public function createProductItemTaxRateCalculatorStrategyResolver(): ProductOptionTaxCalculatorStrategyResolverInterface
+    public function createProductOptionTaxCalculatorStrategyResolver(): ProductOptionTaxCalculatorStrategyResolverInterface
     {
         $strategyContainer = [];
 

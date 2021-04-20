@@ -17,16 +17,6 @@ use Generated\Shared\Transfer\ProductOptionTransfer;
 class MultiAddressShipmentProductOptionAvalaraTaxCalculator extends AbstractProductOptionAvalaraTaxCalculator
 {
     /**
-     * @var \SprykerEco\Zed\AvalaraTaxProductOption\Dependency\Facade\AvalaraTaxProductOptionToMoneyFacadeInterface
-     */
-    protected $moneyFacade;
-
-    /**
-     * @var \SprykerEco\Zed\AvalaraTaxProductOption\Dependency\Service\AvalaraTaxProductOptionToUtilEncodingServiceInterface
-     */
-    protected $utilEncodingService;
-
-    /**
      * @param \Generated\Shared\Transfer\CalculableObjectTransfer $calculableObjectTransfer
      * @param \Generated\Shared\Transfer\AvalaraCreateTransactionResponseTransfer $avalaraCreateTransactionResponseTransfer
      *
@@ -111,10 +101,7 @@ class MultiAddressShipmentProductOptionAvalaraTaxCalculator extends AbstractProd
             }
 
             $itemShipmentAddressZipCode = $itemTransfer->getShipmentOrFail()->getShippingAddressOrFail()->getZipCodeOrFail();
-            if (
-                !isset($zipCodeRegionNameMap[$itemShipmentAddressZipCode])
-                || $zipCodeRegionNameMap[$itemShipmentAddressZipCode] !== $this->extractRegionNameFromAvalaraTransactionLineTransfer($avalaraTransactionLineTransfer)
-            ) {
+            if (!$this->isSameRegion($zipCodeRegionNameMap, $itemShipmentAddressZipCode, $avalaraTransactionLineTransfer)) {
                 continue;
             }
 
@@ -172,5 +159,18 @@ class MultiAddressShipmentProductOptionAvalaraTaxCalculator extends AbstractProd
         }
 
         return null;
+    }
+
+    /**
+     * @param array $zipCodeRegionNameMap
+     * @param string $itemShipmentAddressZipCode
+     * @param \Generated\Shared\Transfer\AvalaraTransactionLineTransfer $avalaraTransactionLineTransfer
+     *
+     * @return bool
+     */
+    protected function isSameRegion(array $zipCodeRegionNameMap, string $itemShipmentAddressZipCode, AvalaraTransactionLineTransfer $avalaraTransactionLineTransfer): bool
+    {
+        return isset($zipCodeRegionNameMap[$itemShipmentAddressZipCode])
+            && $zipCodeRegionNameMap[$itemShipmentAddressZipCode] === $this->extractRegionNameFromAvalaraTransactionLineTransfer($avalaraTransactionLineTransfer);
     }
 }

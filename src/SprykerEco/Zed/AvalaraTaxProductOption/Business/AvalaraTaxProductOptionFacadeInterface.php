@@ -34,6 +34,7 @@ interface AvalaraTaxProductOptionFacadeInterface
     /**
      * Specification:
      * - Calculates taxes for `ProductOptions` based on `AvalaraCreateTransactionResponseTransfer`.
+     * - Sets tax data to `CalculableObjectTransfer.items.productOptions`.
      *
      * @api
      *

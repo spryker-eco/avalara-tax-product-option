@@ -51,7 +51,7 @@ class AvalaraTaxProductOptionFacade extends AbstractFacade implements AvalaraTax
         AvalaraCreateTransactionResponseTransfer $avalaraCreateTransactionResponseTransfer
     ): CalculableObjectTransfer {
         return $this->getFactory()
-            ->createProductItemTaxRateCalculatorStrategyResolver()
+            ->createProductOptionTaxCalculatorStrategyResolver()
             ->resolve($calculableObjectTransfer)
             ->calculateTax($calculableObjectTransfer, $avalaraCreateTransactionResponseTransfer);
     }
