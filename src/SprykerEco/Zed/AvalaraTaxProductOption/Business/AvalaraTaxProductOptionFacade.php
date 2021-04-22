@@ -33,7 +33,7 @@ class AvalaraTaxProductOptionFacade extends AbstractFacade implements AvalaraTax
     ): AvalaraCreateTransactionRequestTransfer {
         return $this->getFactory()
             ->createAvalaraCreateTransactionRequestExpander()
-            ->expandAvalaraCreateTransactionRequestTransfer($avalaraCreateTransactionRequestTransfer, $calculableObjectTransfer);
+            ->expandAvalaraCreateTransactionRequestWithProductOptions($avalaraCreateTransactionRequestTransfer, $calculableObjectTransfer);
     }
 
     /**
