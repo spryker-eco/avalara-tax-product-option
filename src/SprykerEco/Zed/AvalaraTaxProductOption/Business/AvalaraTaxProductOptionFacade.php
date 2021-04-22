@@ -27,7 +27,7 @@ class AvalaraTaxProductOptionFacade extends AbstractFacade implements AvalaraTax
      *
      * @return \Generated\Shared\Transfer\AvalaraCreateTransactionRequestTransfer
      */
-    public function expandAvalaraCreateTransactionRequestTransfer(
+    public function expandAvalaraCreateTransactionRequestWithProductOptions(
         AvalaraCreateTransactionRequestTransfer $avalaraCreateTransactionRequestTransfer,
         CalculableObjectTransfer $calculableObjectTransfer
     ): AvalaraCreateTransactionRequestTransfer {

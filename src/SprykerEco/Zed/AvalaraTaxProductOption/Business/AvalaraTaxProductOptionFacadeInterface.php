@@ -26,7 +26,7 @@ interface AvalaraTaxProductOptionFacadeInterface
      *
      * @return \Generated\Shared\Transfer\AvalaraCreateTransactionRequestTransfer
      */
-    public function expandAvalaraCreateTransactionRequestTransfer(
+    public function expandAvalaraCreateTransactionRequestWithProductOptions(
         AvalaraCreateTransactionRequestTransfer $avalaraCreateTransactionRequestTransfer,
         CalculableObjectTransfer $calculableObjectTransfer
     ): AvalaraCreateTransactionRequestTransfer;

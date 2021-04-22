@@ -1,0 +1,163 @@
+{
+    "error": [],
+    "warning": [
+        {
+            "severity": "info",
+            "line_from": 53,
+            "line_to": 53,
+            "type": "MismatchingDocblockParamType",
+            "message": "Parameter $avalaraTransactionLineTransfers has wrong type 'ArrayObject|array<array-key, Generated\\Shared\\Transfer\\AvalaraTransactionLineTransfer>', should be 'ArrayObject'",
+            "file_name": "vendor/spryker-eco/avalara-tax-product-option/src/SprykerEco/Zed/AvalaraTaxProductOption/Business/Calculator/AbstractProductOptionAvalaraTaxCalculator.php",
+            "snippet": "     * @param \\ArrayObject|\\Generated\\Shared\\Transfer\\AvalaraTransactionLineTransfer[] $avalaraTransactionLineTransfers",
+            "selected_text": "\\ArrayObject|\\Generated\\Shared\\Transfer\\AvalaraTransactionLineTransfer[]",
+            "error_level": 4,
+            "shortcode": 141
+        },
+        {
+            "severity": "info",
+            "line_from": 46,
+            "line_to": 46,
+            "type": "MismatchingDocblockParamType",
+            "message": "Parameter $productOptionTransfers has wrong type 'ArrayObject|array<array-key, Generated\\Shared\\Transfer\\ProductOptionTransfer>', should be 'ArrayObject'",
+            "file_name": "vendor/spryker-eco/avalara-tax-product-option/src/SprykerEco/Zed/AvalaraTaxProductOption/Business/Calculator/SingleAddressShipmentProductOptionAvalaraTaxCalculator.php",
+            "snippet": "     * @param \\ArrayObject|\\Generated\\Shared\\Transfer\\ProductOptionTransfer[] $productOptionTransfers",
+            "selected_text": "\\ArrayObject|\\Generated\\Shared\\Transfer\\ProductOptionTransfer[]",
+            "error_level": 4,
+            "shortcode": 141
+        },
+        {
+            "severity": "info",
+            "line_from": 44,
+            "line_to": 44,
+            "type": "PossiblyInvalidMethodCall",
+            "message": "Cannot call method on possible array<array-key, Generated\\Shared\\Transfer\\ProductOptionTransfer> variable $productOptionTransfers",
+            "file_name": "vendor/spryker-eco/avalara-tax-product-option/src/SprykerEco/Zed/AvalaraTaxProductOption/Business/Expander/AvalaraCreateTransactionRequestExpander.php",
+            "snippet": "            if ($productOptionTransfers->count() === 0) {",
+            "selected_text": "count",
+            "error_level": 3,
+            "shortcode": 113
+        },
+        {
+            "severity": "info",
+            "line_from": 60,
+            "line_to": 60,
+            "type": "MismatchingDocblockParamType",
+            "message": "Parameter $productOptionTransfers has wrong type 'ArrayObject|array<array-key, Generated\\Shared\\Transfer\\ProductOptionTransfer>', should be 'ArrayObject'",
+            "file_name": "vendor/spryker-eco/avalara-tax-product-option/src/SprykerEco/Zed/AvalaraTaxProductOption/Business/Expander/AvalaraCreateTransactionRequestExpander.php",
+            "snippet": "     * @param \\ArrayObject|\\Generated\\Shared\\Transfer\\ProductOptionTransfer[] $productOptionTransfers",
+            "selected_text": "\\ArrayObject|\\Generated\\Shared\\Transfer\\ProductOptionTransfer[]",
+            "error_level": 4,
+            "shortcode": 141
+        }
+    ],
+    "deprecation": [
+        {
+            "severity": "info",
+            "line_from": 86,
+            "line_to": 86,
+            "type": "DeprecatedClass",
+            "message": "Class SprykerEco\\Zed\\AvalaraTaxProductOption\\Business\\StrategyResolver\\ProductOptionTaxCalculatorStrategyResolverInterface is marked as deprecated",
+            "file_name": "vendor/spryker-eco/avalara-tax-product-option/src/SprykerEco/Zed/AvalaraTaxProductOption/Business/AvalaraTaxProductOptionBusinessFactory.php",
+            "snippet": "     * @return \\SprykerEco\\Zed\\AvalaraTaxProductOption\\Business\\StrategyResolver\\ProductOptionTaxCalculatorStrategyResolverInterface",
+            "selected_text": "\\SprykerEco\\Zed\\AvalaraTaxProductOption\\Business\\StrategyResolver\\ProductOptionTaxCalculatorStrategyResolverInterface",
+            "error_level": 2,
+            "shortcode": 98
+        },
+        {
+            "severity": "info",
+            "line_from": 88,
+            "line_to": 88,
+            "type": "DeprecatedClass",
+            "message": "Class SprykerEco\\Zed\\AvalaraTaxProductOption\\Business\\StrategyResolver\\ProductOptionTaxCalculatorStrategyResolverInterface is marked as deprecated",
+            "file_name": "vendor/spryker-eco/avalara-tax-product-option/src/SprykerEco/Zed/AvalaraTaxProductOption/Business/AvalaraTaxProductOptionBusinessFactory.php",
+            "snippet": "    public function createProductOptionTaxCalculatorStrategyResolver(): ProductOptionTaxCalculatorStrategyResolverInterface",
+            "selected_text": "ProductOptionTaxCalculatorStrategyResolverInterface",
+            "error_level": 2,
+            "shortcode": 98
+        },
+        {
+            "severity": "info",
+            "line_from": 92,
+            "line_to": 92,
+            "type": "DeprecatedClass",
+            "message": "Class SprykerEco\\Zed\\AvalaraTaxProductOption\\Business\\StrategyResolver\\ProductOptionTaxCalculatorStrategyResolver is deprecated",
+            "file_name": "vendor/spryker-eco/avalara-tax-product-option/src/SprykerEco/Zed/AvalaraTaxProductOption/Business/AvalaraTaxProductOptionBusinessFactory.php",
+            "snippet": "        $strategyContainer[ProductOptionTaxCalculatorStrategyResolver::STRATEGY_KEY_WITHOUT_MULTI_SHIPMENT] = function () {",
+            "selected_text": "ProductOptionTaxCalculatorStrategyResolver::STRATEGY_KEY_WITHOUT_MULTI_SHIPMENT",
+            "error_level": 2,
+            "shortcode": 98
+        },
+        {
+            "severity": "info",
+            "line_from": 96,
+            "line_to": 96,
+            "type": "DeprecatedClass",
+            "message": "Class SprykerEco\\Zed\\AvalaraTaxProductOption\\Business\\StrategyResolver\\ProductOptionTaxCalculatorStrategyResolver is deprecated",
+            "file_name": "vendor/spryker-eco/avalara-tax-product-option/src/SprykerEco/Zed/AvalaraTaxProductOption/Business/AvalaraTaxProductOptionBusinessFactory.php",
+            "snippet": "        $strategyContainer[ProductOptionTaxCalculatorStrategyResolver::STRATEGY_KEY_WITH_MULTI_SHIPMENT] = function () {",
+            "selected_text": "ProductOptionTaxCalculatorStrategyResolver::STRATEGY_KEY_WITH_MULTI_SHIPMENT",
+            "error_level": 2,
+            "shortcode": 98
+        },
+        {
+            "severity": "info",
+            "line_from": 100,
+            "line_to": 100,
+            "type": "DeprecatedClass",
+            "message": "SprykerEco\\Zed\\AvalaraTaxProductOption\\Business\\StrategyResolver\\ProductOptionTaxCalculatorStrategyResolver is marked deprecated",
+            "file_name": "vendor/spryker-eco/avalara-tax-product-option/src/SprykerEco/Zed/AvalaraTaxProductOption/Business/AvalaraTaxProductOptionBusinessFactory.php",
+            "snippet": "        return new ProductOptionTaxCalculatorStrategyResolver($strategyContainer);",
+            "selected_text": "new ProductOptionTaxCalculatorStrategyResolver($strategyContainer)",
+            "error_level": 2,
+            "shortcode": 98
+        },
+        {
+            "severity": "info",
+            "line_from": 54,
+            "line_to": 54,
+            "type": "DeprecatedMethod",
+            "message": "The method SprykerEco\\Zed\\AvalaraTaxProductOption\\Business\\AvalaraTaxProductOptionBusinessFactory::createProductOptionTaxCalculatorStrategyResolver has been marked as deprecated",
+            "file_name": "vendor/spryker-eco/avalara-tax-product-option/src/SprykerEco/Zed/AvalaraTaxProductOption/Business/AvalaraTaxProductOptionFacade.php",
+            "snippet": "            ->createProductOptionTaxCalculatorStrategyResolver()",
+            "selected_text": "createProductOptionTaxCalculatorStrategyResolver",
+            "error_level": 2,
+            "shortcode": 1
+        },
+        {
+            "severity": "info",
+            "line_from": 18,
+            "line_to": 18,
+            "type": "DeprecatedInterface",
+            "message": "SprykerEco\\Zed\\AvalaraTaxProductOption\\Business\\StrategyResolver\\ProductOptionTaxCalculatorStrategyResolverInterface is marked deprecated",
+            "file_name": "vendor/spryker-eco/avalara-tax-product-option/src/SprykerEco/Zed/AvalaraTaxProductOption/Business/StrategyResolver/ProductOptionTaxCalculatorStrategyResolver.php",
+            "snippet": "class ProductOptionTaxCalculatorStrategyResolver implements ProductOptionTaxCalculatorStrategyResolverInterface",
+            "selected_text": "ProductOptionTaxCalculatorStrategyResolver",
+            "error_level": 2,
+            "shortcode": 152
+        },
+        {
+            "severity": "info",
+            "line_from": 43,
+            "line_to": 43,
+            "type": "DeprecatedMethod",
+            "message": "The method Generated\\Shared\\Transfer\\CalculableObjectTransfer::getShippingAddress has been marked as deprecated",
+            "file_name": "vendor/spryker-eco/avalara-tax-product-option/src/SprykerEco/Zed/AvalaraTaxProductOption/Business/StrategyResolver/ProductOptionTaxCalculatorStrategyResolver.php",
+            "snippet": "        if ($calculableObjectTransfer->getShippingAddress() !== null && $calculableObjectTransfer->getShippingAddressOrFail()->getZipCode() !== null) {",
+            "selected_text": "getShippingAddress",
+            "error_level": 2,
+            "shortcode": 1
+        },
+        {
+            "severity": "info",
+            "line_from": 43,
+            "line_to": 43,
+            "type": "DeprecatedMethod",
+            "message": "The method Generated\\Shared\\Transfer\\CalculableObjectTransfer::getShippingAddressOrFail has been marked as deprecated",
+            "file_name": "vendor/spryker-eco/avalara-tax-product-option/src/SprykerEco/Zed/AvalaraTaxProductOption/Business/StrategyResolver/ProductOptionTaxCalculatorStrategyResolver.php",
+            "snippet": "        if ($calculableObjectTransfer->getShippingAddress() !== null && $calculableObjectTransfer->getShippingAddressOrFail()->getZipCode() !== null) {",
+            "selected_text": "getShippingAddressOrFail",
+            "error_level": 2,
+            "shortcode": 1
+        }
+    ]
+}

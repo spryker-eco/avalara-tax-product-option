@@ -71,14 +71,14 @@ class AvalaraCreateTransactionRequestExpander implements AvalaraCreateTransactio
         string $priceMode
     ): AvalaraCreateTransactionRequestTransfer {
         foreach ($productOptionTransfers as $productOptionTransfer) {
-            $avalaraLineTransfer = $this->avalaraLineItemMapper->mapProductOptionTransferToAvalaraLineItemTransfer(
+            $avalaraLineItemTransfer = $this->avalaraLineItemMapper->mapProductOptionTransferToAvalaraLineItemTransfer(
                 $productOptionTransfer,
                 new AvalaraLineItemTransfer(),
                 $itemTransfer,
                 $priceMode
             );
 
-            $avalaraCreateTransactionRequestTransfer->getTransactionOrFail()->addLine($avalaraLineTransfer);
+            $avalaraCreateTransactionRequestTransfer->getTransactionOrFail()->addLine($avalaraLineItemTransfer);
         }
 
         return $avalaraCreateTransactionRequestTransfer;

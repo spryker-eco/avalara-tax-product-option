@@ -48,7 +48,7 @@ class AvalaraTaxProductOptionFacadeTest extends Unit
     /**
      * @return void
      */
-    public function testExpandAvalaraCreateTransactionRequestTransferWillExpandAvalaraTransactionRequestTransferWithProductOptionLines(): void
+    public function testexpandAvalaraCreateTransactionRequestWithProductOptionWillExpandAvalaraTransactionRequestTransferWithProductOptionLines(): void
     {
         // Arrange
         $calculableObjectTransfer = $this->createCalculableObjectTransfer();
@@ -58,7 +58,7 @@ class AvalaraTaxProductOptionFacadeTest extends Unit
             ->build();
 
         // Act
-        $avalaraCreateTransactionRequestTransfer = $this->tester->getFacade()->expandAvalaraCreateTransactionRequestTransfer(
+        $avalaraCreateTransactionRequestTransfer = $this->tester->getFacade()->expandAvalaraCreateTransactionRequestWithProductOptions(
             $avalaraCreateTransactionRequestTransfer,
             $calculableObjectTransfer
         );
@@ -195,9 +195,9 @@ class AvalaraTaxProductOptionFacadeTest extends Unit
     }
 
     /**
-     * @return \Generated\Shared\Transfer\AvalaraTransactionTransfer|\Spryker\Shared\Kernel\Transfer\AbstractTransfer
+     * @return \Generated\Shared\Transfer\AvalaraTransactionTransfer
      */
-    protected function createAvalaraTransactionTransfer()
+    protected function createAvalaraTransactionTransfer(): AvalaraTransactionTransfer
     {
         return (new AvalaraTransactionBuilder([
             AvalaraTransactionTransfer::ADDRESSES => '[{"id":0,"transactionId":0,"boundaryLevel":"Zip5","line1":"Seeburger Str., 270, Block B","line2":"270","line3":"Block B","city":"Detroit","region":"MI","postalCode":"48201","country":"US","taxRegionId":4019220,"latitude":"42.347989","longitude":"-83.061514"}]',

@@ -40,7 +40,7 @@ class ProductOptionTaxCalculatorStrategyResolver implements ProductOptionTaxCalc
      */
     public function resolve(CalculableObjectTransfer $calculableObjectTransfer): ProductOptionAvalaraTaxCalculatorInterface
     {
-        if ($calculableObjectTransfer->getShippingAddress() !== null && $calculableObjectTransfer->getShippingAddress()->getZipCode() !== null) {
+        if ($calculableObjectTransfer->getShippingAddress() !== null && $calculableObjectTransfer->getShippingAddressOrFail()->getZipCode() !== null) {
             $this->assertRequiredStrategyWithoutMultiShipmentContainerItems();
 
             return call_user_func($this->strategyContainer[static::STRATEGY_KEY_WITHOUT_MULTI_SHIPMENT]);

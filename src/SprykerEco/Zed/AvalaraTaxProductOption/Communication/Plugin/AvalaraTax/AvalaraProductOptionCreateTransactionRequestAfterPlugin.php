@@ -14,11 +14,12 @@ use SprykerEco\Zed\AvalaraTaxExtension\Dependency\Plugin\CreateTransactionReques
 
 /**
  * @method \SprykerEco\Zed\AvalaraTaxProductOption\Business\AvalaraTaxProductOptionFacadeInterface getFacade()
+ * @method \SprykerEco\Zed\AvalaraTaxProductOption\AvalaraTaxProductOptionConfig getConfig()
  */
 class AvalaraProductOptionCreateTransactionRequestAfterPlugin extends AbstractPlugin implements CreateTransactionRequestAfterPluginInterface
 {
     /**
-     * Specification:
+     * {@inheritDoc}
      * - Calculates taxes for `ProductOptions` based on `AvalaraCreateTransactionResponseTransfer`.
      * - Sets tax data to `CalculableObjectTransfer.items.productOptions`.
      *
