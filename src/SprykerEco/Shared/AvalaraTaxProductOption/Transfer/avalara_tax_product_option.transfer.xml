@@ -36,6 +36,7 @@
         <property name="sku" type="string"/>
         <property name="productOptions" type="ProductOption[]" singular="productOption"/>
         <property name="shipment" type="Shipment"/>
+        <property name="warehouses" type="Stock[]" singular="warehouse"/>
     </transfer>
 
     <transfer name="AvalaraTransaction">
@@ -50,6 +51,7 @@
     <transfer name="AvalaraLineItem">
         <property name="taxCode" type="string"/>
         <property name="shippingAddress" type="AvalaraAddress"/>
+        <property name="sourceAddresses" type="AvalaraAddress[]" singular="sourceAddress"/>
         <property name="quantity" type="int"/>
         <property name="amount" type="decimal"/>
         <property name="itemCode" type="string"/>
