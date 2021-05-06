@@ -99,7 +99,7 @@ class AvalaraLineItemMapper implements AvalaraLineItemMapperInterface
      */
     protected function calculateProductOptionAmount(ProductOptionTransfer $productOptionTransfer): float
     {
-        $productOptionAmount = $productOptionTransfer->getSumPriceOrFail() - $productOptionTransfer->getSumDiscountAmountAggregationOrFail();
+        $productOptionAmount = $productOptionTransfer->getSumPriceOrFail() - $productOptionTransfer->getSumDiscountAmountAggregation() ?? 0;
 
         return $this->moneyFacade->convertIntegerToDecimal($productOptionAmount);
     }
