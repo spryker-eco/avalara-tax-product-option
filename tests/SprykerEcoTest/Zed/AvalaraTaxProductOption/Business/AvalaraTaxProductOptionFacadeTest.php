@@ -39,6 +39,7 @@ class AvalaraTaxProductOptionFacadeTest extends Unit
     protected const TEST_PRODUCT_OPTION_PRICE = 111;
     protected const TEST_ZIP_CODE = '48201';
     protected const TEST_PRODUCT_OPTION_TAX = 18.829999999999998;
+    protected const TEST_AVALARA_TAX_CODE = 'TESTCODE';
 
     /**
      * @var \SprykerEcoTest\Zed\AvalaraTaxProductOption\AvalaraTaxProductOptionBusinessTester
@@ -48,7 +49,7 @@ class AvalaraTaxProductOptionFacadeTest extends Unit
     /**
      * @return void
      */
-    public function testexpandAvalaraCreateTransactionRequestWithProductOptionWillExpandAvalaraTransactionRequestTransferWithProductOptionLines(): void
+    public function testExpandAvalaraCreateTransactionRequestWithProductOptionWillExpandAvalaraTransactionRequestTransferWithProductOptionLines(): void
     {
         // Arrange
         $calculableObjectTransfer = $this->createCalculableObjectTransfer();
@@ -94,7 +95,7 @@ class AvalaraTaxProductOptionFacadeTest extends Unit
 
         // Assert
         $productOptionTransfer = $this->findProductOptionTransfer(static::TEST_PRODUCT_OPTION_SKU, $calculableObjectTransfer);
-        $this->assertSame(6, $productOptionTransfer->getTaxRate());
+        $this->assertEquals(6, $productOptionTransfer->getTaxRate());
         $this->assertSame(1883, $productOptionTransfer->getSumTaxAmount());
     }
 
@@ -118,7 +119,7 @@ class AvalaraTaxProductOptionFacadeTest extends Unit
 
         // Assert
         $productOptionTransfer = $this->findProductOptionTransfer(static::TEST_PRODUCT_OPTION_SKU, $calculableObjectTransfer);
-        $this->assertSame(6, $productOptionTransfer->getTaxRate());
+        $this->assertEquals(6, $productOptionTransfer->getTaxRate());
         $this->assertSame(1883, $productOptionTransfer->getSumTaxAmount());
     }
 
@@ -172,6 +173,7 @@ class AvalaraTaxProductOptionFacadeTest extends Unit
             ProductOptionTransfer::SUM_PRICE => static::TEST_PRODUCT_OPTION_PRICE,
             ProductOptionTransfer::SUM_DISCOUNT_AMOUNT_AGGREGATION => 0,
             ProductOptionTransfer::QUANTITY => 1,
+            ProductOptionTransfer::AVALARA_TAX_CODE => static::TEST_AVALARA_TAX_CODE,
         ]))->build();
 
         $itemBuilder = (new ItemBuilder([ItemTransfer::SKU => static::TEST_ITEM_SKU]));
