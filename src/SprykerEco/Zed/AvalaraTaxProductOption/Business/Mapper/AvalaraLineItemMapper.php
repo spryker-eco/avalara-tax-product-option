@@ -56,7 +56,7 @@ class AvalaraLineItemMapper implements AvalaraLineItemMapperInterface
         string $priceMode
     ): AvalaraLineItemTransfer {
         $avalaraLineItemTransfer
-            ->setTaxCode($productOptionTransfer->getAvalaraTaxCodeOrFail())
+            ->setTaxCode($productOptionTransfer->getAvalaraTaxCode() ?? '')
             ->setQuantity($productOptionTransfer->getQuantityOrFail())
             ->setAmount($this->calculateProductOptionAmount($productOptionTransfer))
             ->setItemCode($productOptionTransfer->getSkuOrFail())
