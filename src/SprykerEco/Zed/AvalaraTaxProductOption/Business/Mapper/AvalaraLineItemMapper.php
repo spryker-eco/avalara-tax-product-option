@@ -7,11 +7,13 @@
 
 namespace SprykerEco\Zed\AvalaraTaxProductOption\Business\Mapper;
 
+use Generated\Shared\Transfer\AddressTransfer;
 use Generated\Shared\Transfer\AvalaraAddressTransfer;
 use Generated\Shared\Transfer\AvalaraLineItemTransfer;
 use Generated\Shared\Transfer\ItemTransfer;
 use Generated\Shared\Transfer\ProductOptionTransfer;
 use Generated\Shared\Transfer\ShipmentTransfer;
+use Generated\Shared\Transfer\StockAddressTransfer;
 use SprykerEco\Zed\AvalaraTaxProductOption\Dependency\Facade\AvalaraTaxProductOptionToMoneyFacadeInterface;
 
 class AvalaraLineItemMapper implements AvalaraLineItemMapperInterface
@@ -69,12 +71,12 @@ class AvalaraLineItemMapper implements AvalaraLineItemMapperInterface
             ->setReference2($itemTransfer->getSkuOrFail())
             ->setTaxIncluded($this->isTaxIncluded($priceMode));
 
-        if (!$itemTransfer->getShipment() && $itemTransfer->getWarehouses()->count() === 0) {
+        if (!$itemTransfer->getShipment() && !$itemTransfer->getWarehouse()) {
             return $avalaraLineItemTransfer;
         }
 
         $avalaraLineItemTransfer = $this->mapItemTransferShippingAddressToAvalaraLineItemTransfer($itemTransfer, $avalaraLineItemTransfer);
-        $avalaraLineItemTransfer = $this->mapItemTransferStockAddressesToAvalaraItemTransfer($itemTransfer, $avalaraLineItemTransfer);
+        $avalaraLineItemTransfer = $this->mapItemTransferStockAddressToAvalaraItemTransfer($itemTransfer, $avalaraLineItemTransfer);
 
         return $avalaraLineItemTransfer;
     }
@@ -108,30 +110,26 @@ class AvalaraLineItemMapper implements AvalaraLineItemMapperInterface
      *
      * @return \Generated\Shared\Transfer\AvalaraLineItemTransfer
      */
-    protected function mapItemTransferStockAddressesToAvalaraItemTransfer(
+    protected function mapItemTransferStockAddressToAvalaraItemTransfer(
         ItemTransfer $itemTransfer,
         AvalaraLineItemTransfer $avalaraLineItemTransfer
     ): AvalaraLineItemTransfer {
-        if ($itemTransfer->getWarehouses()->count() === 0) {
+        if (!$itemTransfer->getWarehouse()) {
             return $avalaraLineItemTransfer;
         }
 
-        foreach ($itemTransfer->getWarehouses() as $stockTransfer) {
-            if (!$stockTransfer->getAddress()) {
-                continue;
-            }
-
-            $avalaraShippingAddressTransfer = (new AvalaraAddressTransfer())->setType(static::AVALARA_SHIP_FROM_ADDRESS_TYPE);
-
-            $avalaraShippingAddressTransfer = $this->mapShipmentTransferToAvalaraAddressTransfer(
-                $itemTransfer->getShipmentOrFail(),
-                $avalaraShippingAddressTransfer
-            );
-
-            $avalaraLineItemTransfer->addSourceAddress($avalaraShippingAddressTransfer);
+        $stockAddressTransfer = $itemTransfer->getWarehouseOrFail()->getAddress();
+        if ($stockAddressTransfer === null) {
+            return $avalaraLineItemTransfer;
         }
 
-        return $avalaraLineItemTransfer;
+        $avalaraShippingAddressTransfer = (new AvalaraAddressTransfer())->setType(static::AVALARA_SHIP_FROM_ADDRESS_TYPE);
+        $avalaraShippingAddressTransfer = $this->mapStockAddressTransferToAvalaraAddressTransfer(
+            $stockAddressTransfer,
+            $avalaraShippingAddressTransfer
+        );
+
+        return $avalaraLineItemTransfer->setSourceAddress($avalaraShippingAddressTransfer);
     }
 
     /**
@@ -144,9 +142,22 @@ class AvalaraLineItemMapper implements AvalaraLineItemMapperInterface
         ShipmentTransfer $shipmentTransfer,
         AvalaraAddressTransfer $avalaraAddressTransfer
     ): AvalaraAddressTransfer {
-        $avalaraAddressTransfer->setAddress($shipmentTransfer->getShippingAddressOrFail());
+        return $avalaraAddressTransfer->setAddress($shipmentTransfer->getShippingAddressOrFail());
+    }
 
-        return $avalaraAddressTransfer;
+    /**
+     * @param \Generated\Shared\Transfer\StockAddressTransfer $stockAddressTransfer
+     * @param \Generated\Shared\Transfer\AvalaraAddressTransfer $avalaraAddressTransfer
+     *
+     * @return \Generated\Shared\Transfer\AvalaraAddressTransfer
+     */
+    protected function mapStockAddressTransferToAvalaraAddressTransfer(
+        StockAddressTransfer $stockAddressTransfer,
+        AvalaraAddressTransfer $avalaraAddressTransfer
+    ): AvalaraAddressTransfer {
+        $addressTransfer = (new AddressTransfer())->fromArray($stockAddressTransfer->toArray(), true);
+
+        return $avalaraAddressTransfer->setAddress($addressTransfer);
     }
 
     /**
