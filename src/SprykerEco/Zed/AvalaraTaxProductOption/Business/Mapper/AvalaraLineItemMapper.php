@@ -156,6 +156,7 @@ class AvalaraLineItemMapper implements AvalaraLineItemMapperInterface
         AvalaraAddressTransfer $avalaraAddressTransfer
     ): AvalaraAddressTransfer {
         $addressTransfer = (new AddressTransfer())->fromArray($stockAddressTransfer->toArray(), true);
+        $addressTransfer->setIso2Code($stockAddressTransfer->getCountryOrFail()->getIso2CodeOrFail());
 
         return $avalaraAddressTransfer->setAddress($addressTransfer);
     }
