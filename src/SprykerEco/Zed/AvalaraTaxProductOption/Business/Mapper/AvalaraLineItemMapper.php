@@ -63,7 +63,7 @@ class AvalaraLineItemMapper implements AvalaraLineItemMapperInterface
         string $priceMode
     ): AvalaraLineItemTransfer {
         $avalaraLineItemTransfer
-            ->setTaxCode($productOptionTransfer->getAvalaraTaxCodeOrFail())
+            ->setTaxCode($productOptionTransfer->getAvalaraTaxCode() ?? '')
             ->setQuantity($productOptionTransfer->getQuantityOrFail())
             ->setAmount($this->calculateProductOptionAmount($productOptionTransfer))
             ->setItemCode($productOptionTransfer->getSkuOrFail())
@@ -167,7 +167,7 @@ class AvalaraLineItemMapper implements AvalaraLineItemMapperInterface
      */
     protected function calculateProductOptionAmount(ProductOptionTransfer $productOptionTransfer): float
     {
-        $productOptionAmount = $productOptionTransfer->getSumPriceOrFail() - $productOptionTransfer->getSumDiscountAmountAggregationOrFail();
+        $productOptionAmount = $productOptionTransfer->getSumPriceOrFail() - $productOptionTransfer->getSumDiscountAmountAggregation() ?? 0;
 
         return $this->moneyFacade->convertIntegerToDecimal($productOptionAmount);
     }

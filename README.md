@@ -2,7 +2,7 @@
 [![Build Status](https://travis-ci.org/spryker-eco/avalara-tax-product-option.svg)](https://travis-ci.org/spryker-eco/avalara-tax-product-option)
 [![Minimum PHP Version](https://img.shields.io/badge/php-%3E%3D%207.2-8892BF.svg)](https://php.net/)
 
-AvalaraTaxProductOption module provides plugins for extending AvalaraTax module functionality with calculating taxes for product options.
+AvalaraTaxProductOption module provides functionality to calculate taxes for product options.
 
 ## Installation
 

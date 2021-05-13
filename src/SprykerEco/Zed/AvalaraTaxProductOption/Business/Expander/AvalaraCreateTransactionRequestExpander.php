@@ -35,7 +35,7 @@ class AvalaraCreateTransactionRequestExpander implements AvalaraCreateTransactio
      *
      * @return \Generated\Shared\Transfer\AvalaraCreateTransactionRequestTransfer
      */
-    public function expandAvalaraCreateTransactionRequestTransfer(
+    public function expandAvalaraCreateTransactionRequestWithProductOptions(
         AvalaraCreateTransactionRequestTransfer $avalaraCreateTransactionRequestTransfer,
         CalculableObjectTransfer $calculableObjectTransfer
     ): AvalaraCreateTransactionRequestTransfer {
@@ -71,14 +71,14 @@ class AvalaraCreateTransactionRequestExpander implements AvalaraCreateTransactio
         string $priceMode
     ): AvalaraCreateTransactionRequestTransfer {
         foreach ($productOptionTransfers as $productOptionTransfer) {
-            $avalaraLineTransfer = $this->avalaraLineItemMapper->mapProductOptionTransferToAvalaraLineItemTransfer(
+            $avalaraLineItemTransfer = $this->avalaraLineItemMapper->mapProductOptionTransferToAvalaraLineItemTransfer(
                 $productOptionTransfer,
                 new AvalaraLineItemTransfer(),
                 $itemTransfer,
                 $priceMode
             );
 
-            $avalaraCreateTransactionRequestTransfer->getTransactionOrFail()->addLine($avalaraLineTransfer);
+            $avalaraCreateTransactionRequestTransfer->getTransactionOrFail()->addLine($avalaraLineItemTransfer);
         }
 
         return $avalaraCreateTransactionRequestTransfer;

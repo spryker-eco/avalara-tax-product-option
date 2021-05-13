@@ -14,12 +14,15 @@ use SprykerEco\Zed\AvalaraTaxExtension\Dependency\Plugin\CreateTransactionReques
 
 /**
  * @method \SprykerEco\Zed\AvalaraTaxProductOption\Business\AvalaraTaxProductOptionFacadeInterface getFacade()
+ * @method \SprykerEco\Zed\AvalaraTaxProductOption\AvalaraTaxProductOptionConfig getConfig()
  */
 class AvalaraProductOptionCreateTransactionRequestExpanderPlugin extends AbstractPlugin implements CreateTransactionRequestExpanderPluginInterface
 {
     /**
-     * Specification:
+     * {@inheritDoc}
      * - Expands `AvalaraCreateTransactionRequestTransfer` with product option data.
+     * - Requires `CalculableObjectTransfer.items.productOption.avalaraTaxCode` and `CalculableObjectTransfer.items.productOption.sku` to be set.
+     * - Requires `AvalaraCreateTransactionRequestTransfer.transaction` to be set.
      *
      * @api
      *
@@ -32,7 +35,7 @@ class AvalaraProductOptionCreateTransactionRequestExpanderPlugin extends Abstrac
         AvalaraCreateTransactionRequestTransfer $avalaraCreateTransactionRequestTransfer,
         CalculableObjectTransfer $calculableObjectTransfer
     ): AvalaraCreateTransactionRequestTransfer {
-        return $this->getFacade()->expandAvalaraCreateTransactionRequestTransfer(
+        return $this->getFacade()->expandAvalaraCreateTransactionRequestWithProductOptions(
             $avalaraCreateTransactionRequestTransfer,
             $calculableObjectTransfer
         );

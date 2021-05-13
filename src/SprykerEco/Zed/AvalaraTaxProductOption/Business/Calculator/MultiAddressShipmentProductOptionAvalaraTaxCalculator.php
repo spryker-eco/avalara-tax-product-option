@@ -162,14 +162,17 @@ class MultiAddressShipmentProductOptionAvalaraTaxCalculator extends AbstractProd
     }
 
     /**
-     * @param array $zipCodeRegionNameMap
+     * @param string[] $zipCodeRegionNameMap
      * @param string $itemShipmentAddressZipCode
      * @param \Generated\Shared\Transfer\AvalaraTransactionLineTransfer $avalaraTransactionLineTransfer
      *
      * @return bool
      */
-    protected function isSameRegion(array $zipCodeRegionNameMap, string $itemShipmentAddressZipCode, AvalaraTransactionLineTransfer $avalaraTransactionLineTransfer): bool
-    {
+    protected function isSameRegion(
+        array $zipCodeRegionNameMap,
+        string $itemShipmentAddressZipCode,
+        AvalaraTransactionLineTransfer $avalaraTransactionLineTransfer
+    ): bool {
         return isset($zipCodeRegionNameMap[$itemShipmentAddressZipCode])
             && $zipCodeRegionNameMap[$itemShipmentAddressZipCode] === $this->extractRegionNameFromAvalaraTransactionLineTransfer($avalaraTransactionLineTransfer);
     }
