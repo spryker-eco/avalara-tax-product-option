@@ -1,5 +1,6 @@
 {
     "include": {
+        "spryker/product-option": "Provides base functionality of product options.",
         "spryker/transfer": "Provides transfer objects definition with `::get*OrFail()` functionality."
     }
 }
