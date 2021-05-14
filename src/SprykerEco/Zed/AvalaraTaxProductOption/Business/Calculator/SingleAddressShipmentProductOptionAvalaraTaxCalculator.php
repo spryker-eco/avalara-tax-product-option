@@ -37,6 +37,8 @@ class SingleAddressShipmentProductOptionAvalaraTaxCalculator extends AbstractPro
                 $productOptionTransfers,
                 $productOptionAvalaraTransactionLineTransfersMappedByItemSkuAndProductOptionSku[$itemTransfer->getSkuOrFail()]
             );
+
+            $this->setDefaultZeroTaxRateForProductOptions($itemTransfer);
         }
 
         return $calculableObjectTransfer;
