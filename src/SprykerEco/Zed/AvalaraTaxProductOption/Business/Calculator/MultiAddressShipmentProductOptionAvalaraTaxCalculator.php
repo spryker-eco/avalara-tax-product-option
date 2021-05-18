@@ -79,6 +79,8 @@ class MultiAddressShipmentProductOptionAvalaraTaxCalculator extends AbstractProd
                 ->setTaxRate($taxRate)
                 ->setSumTaxAmount($taxAmount);
         }
+
+        $this->setDefaultZeroTaxRateForProductOptions($itemTransfer);
     }
 
     /**

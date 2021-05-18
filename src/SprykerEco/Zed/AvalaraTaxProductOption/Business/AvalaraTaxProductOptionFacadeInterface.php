@@ -16,8 +16,8 @@ interface AvalaraTaxProductOptionFacadeInterface
     /**
      * Specification:
      * - Expands `AvalaraCreateTransactionRequestTransfer` with product option data.
-     * - Requires `CalculableObjectTransfer.items.productOption.avalaraTaxCode` and `CalculableObjectTransfer.items.productOption.sku` to be set.
-     * - Requires `AvalaraCreateTransactionRequestTransfer.transaction` to be set.
+     * - Requires `CalculableObjectTransfer.items.productOption.sku` and `AvalaraCreateTransactionRequestTransfer.transaction` to be set.
+     * - Expects `CalculableObjectTransfer.items.productOption.avalaraTaxCode` to be set.
      *
      * @api
      *

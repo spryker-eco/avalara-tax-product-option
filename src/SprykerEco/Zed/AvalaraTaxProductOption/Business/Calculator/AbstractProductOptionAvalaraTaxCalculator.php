@@ -10,6 +10,7 @@ namespace SprykerEco\Zed\AvalaraTaxProductOption\Business\Calculator;
 use ArrayObject;
 use Generated\Shared\Transfer\AvalaraCreateTransactionResponseTransfer;
 use Generated\Shared\Transfer\CalculableObjectTransfer;
+use Generated\Shared\Transfer\ItemTransfer;
 use SprykerEco\Zed\AvalaraTaxProductOption\Business\Mapper\AvalaraLineItemMapper;
 use SprykerEco\Zed\AvalaraTaxProductOption\Dependency\Facade\AvalaraTaxProductOptionToMoneyFacadeInterface;
 use SprykerEco\Zed\AvalaraTaxProductOption\Dependency\Service\AvalaraTaxProductOptionToUtilEncodingServiceInterface;
@@ -96,5 +97,23 @@ abstract class AbstractProductOptionAvalaraTaxCalculator implements ProductOptio
     protected function convertToPercents(float $number): float
     {
         return $number * 100.0;
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\ItemTransfer $itemTransfer
+     *
+     * @return \Generated\Shared\Transfer\ItemTransfer
+     */
+    protected function setDefaultZeroTaxRateForProductOptions(ItemTransfer $itemTransfer): ItemTransfer
+    {
+        foreach ($itemTransfer->getProductOptions() as $productOptionTransfer) {
+            if (!$productOptionTransfer->getTaxRate() && !$productOptionTransfer->getSumTaxAmount()) {
+                $productOptionTransfer
+                    ->setTaxRate(0)
+                    ->setSumTaxAmount(0);
+            }
+        }
+
+        return $itemTransfer;
     }
 }
