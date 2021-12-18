@@ -1,6 +1,7 @@
 # AvalaraTaxProductOption Module
 [![CI](https://github.com/spryker-eco/avalara-tax-product-option/actions/workflows/ci.yml/badge.svg)](https://github.com/spryker-eco/avalara-tax-product-option/actions/workflows/ci.yml)
-[![Minimum PHP Version](https://img.shields.io/badge/php-%3E%3D%207.2-8892BF.svg)](https://php.net/)
+[![Latest Stable Version](https://poser.pugx.org/spryker-eco/adyen-api/v/stable.svg)](https://packagist.org/packages/spryker-eco/avalara-tax-product-option)
+[![Minimum PHP Version](https://img.shields.io/badge/php-%3E%3D%207.4-8892BF.svg)](https://php.net/)
 
 AvalaraTaxProductOption module provides functionality to calculate taxes for product options.
 
