@@ -18,20 +18,29 @@ use SprykerEco\Zed\AvalaraTaxProductOption\Dependency\Facade\AvalaraTaxProductOp
 
 class AvalaraLineItemMapper implements AvalaraLineItemMapperInterface
 {
+    /**
+     * @var string
+     */
     public const PRODUCT_OPTION_AVALARA_LINE_TYPE = 'cart-item-option';
 
     /**
      * @uses \Spryker\Shared\Price\PriceConfig::PRICE_MODE_GROSS
+     *
+     * @var string
      */
     protected const PRICE_MODE_GROSS = 'GROSS_MODE';
 
     /**
      * @uses \Avalara\TransactionAddressType::C_SHIPTO
+     *
+     * @var string
      */
     protected const AVALARA_SHIP_TO_ADDRESS_TYPE = 'ShipTo';
 
     /**
      * @uses \Avalara\TransactionAddressType::C_SHIPFROM
+     *
+     * @var string
      */
     protected const AVALARA_SHIP_FROM_ADDRESS_TYPE = 'ShipFrom';
 
@@ -98,7 +107,7 @@ class AvalaraLineItemMapper implements AvalaraLineItemMapperInterface
         $avalaraShippingAddressTransfer = (new AvalaraAddressTransfer())->setType(static::AVALARA_SHIP_TO_ADDRESS_TYPE);
         $avalaraShippingAddressTransfer = $this->mapShipmentTransferToAvalaraAddressTransfer(
             $itemTransfer->getShipmentOrFail(),
-            $avalaraShippingAddressTransfer
+            $avalaraShippingAddressTransfer,
         );
 
         return $avalaraLineItemTransfer->setShippingAddress($avalaraShippingAddressTransfer);
@@ -126,7 +135,7 @@ class AvalaraLineItemMapper implements AvalaraLineItemMapperInterface
         $avalaraShippingAddressTransfer = (new AvalaraAddressTransfer())->setType(static::AVALARA_SHIP_FROM_ADDRESS_TYPE);
         $avalaraShippingAddressTransfer = $this->mapStockAddressTransferToAvalaraAddressTransfer(
             $stockAddressTransfer,
-            $avalaraShippingAddressTransfer
+            $avalaraShippingAddressTransfer,
         );
 
         return $avalaraLineItemTransfer->setSourceAddress($avalaraShippingAddressTransfer);

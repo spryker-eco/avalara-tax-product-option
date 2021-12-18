@@ -36,7 +36,7 @@ class AvalaraProductOptionCreateTransactionRequestAfterPlugin extends AbstractPl
     ): CalculableObjectTransfer {
         return $this->getFacade()->calculateProductOptionTax(
             $calculableObjectTransfer,
-            $avalaraCreateTransactionResponseTransfer
+            $avalaraCreateTransactionResponseTransfer,
         );
     }
 }

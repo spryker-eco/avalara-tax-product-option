@@ -30,7 +30,7 @@ class MultiAddressShipmentProductOptionAvalaraTaxCalculator extends AbstractProd
 
         $zipCodeRegionNameMap = $this->getRegionZipCodeMap($avalaraTransactionTransfer);
         $productOptionAvalaraTransactionLineTransfersMappedByItemSkuAndProductOptionSku = $this->getProductOptionAvalaraTransactionLineTransfersIndexedByItemSkuAndProductOptionSku(
-            $avalaraCreateTransactionResponseTransfer->getTransactionOrFail()->getLines()
+            $avalaraCreateTransactionResponseTransfer->getTransactionOrFail()->getLines(),
         );
 
         foreach ($calculableObjectTransfer->getItems() as $itemTransfer) {
@@ -41,7 +41,7 @@ class MultiAddressShipmentProductOptionAvalaraTaxCalculator extends AbstractProd
             $this->calculateProductOptionsTax(
                 $itemTransfer,
                 $productOptionAvalaraTransactionLineTransfersMappedByItemSkuAndProductOptionSku[$itemTransfer->getSkuOrFail()],
-                $zipCodeRegionNameMap
+                $zipCodeRegionNameMap,
             );
         }
 
@@ -50,8 +50,8 @@ class MultiAddressShipmentProductOptionAvalaraTaxCalculator extends AbstractProd
 
     /**
      * @param \Generated\Shared\Transfer\ItemTransfer $itemTransfer
-     * @param \Generated\Shared\Transfer\AvalaraTransactionLineTransfer[] $avalaraTransactionLineTransfers
-     * @param string[] $zipCodeRegionNameMap
+     * @param array<\Generated\Shared\Transfer\AvalaraTransactionLineTransfer> $avalaraTransactionLineTransfers
+     * @param array<string> $zipCodeRegionNameMap
      *
      * @return void
      */
@@ -65,7 +65,7 @@ class MultiAddressShipmentProductOptionAvalaraTaxCalculator extends AbstractProd
                 $itemTransfer,
                 $productOptionTransfer,
                 $avalaraTransactionLineTransfers,
-                $zipCodeRegionNameMap
+                $zipCodeRegionNameMap,
             );
 
             if (!$productOptionAvalaraTransactionLineTransfer) {
@@ -86,8 +86,8 @@ class MultiAddressShipmentProductOptionAvalaraTaxCalculator extends AbstractProd
     /**
      * @param \Generated\Shared\Transfer\ItemTransfer $itemTransfer
      * @param \Generated\Shared\Transfer\ProductOptionTransfer $productOptionTransfer
-     * @param \Generated\Shared\Transfer\AvalaraTransactionLineTransfer[] $avalaraTransactionLineTransfers
-     * @param string[] $zipCodeRegionNameMap
+     * @param array<\Generated\Shared\Transfer\AvalaraTransactionLineTransfer> $avalaraTransactionLineTransfers
+     * @param array<string> $zipCodeRegionNameMap
      *
      * @return \Generated\Shared\Transfer\AvalaraTransactionLineTransfer|null
      */
@@ -116,13 +116,13 @@ class MultiAddressShipmentProductOptionAvalaraTaxCalculator extends AbstractProd
     /**
      * @param \Generated\Shared\Transfer\AvalaraTransactionTransfer $avalaraTransactionTransfer
      *
-     * @return string[]
+     * @return array<string>
      */
     protected function getRegionZipCodeMap(AvalaraTransactionTransfer $avalaraTransactionTransfer): array
     {
         $zipCodeRegionMap = [];
 
-        /** @var \Avalara\TransactionAddressModel[] $avalaraTransactionAddressModels */
+        /** @var array<\Avalara\TransactionAddressModel> $avalaraTransactionAddressModels */
         $avalaraTransactionAddressModels = $this->utilEncodingService->decodeJson($avalaraTransactionTransfer->getAddressesOrFail(), false);
         foreach ($avalaraTransactionAddressModels as $avalaraTransactionAddressModel) {
             if (array_key_exists($avalaraTransactionAddressModel->postalCode, $zipCodeRegionMap)) {
@@ -142,10 +142,10 @@ class MultiAddressShipmentProductOptionAvalaraTaxCalculator extends AbstractProd
      */
     protected function extractRegionNameFromAvalaraTransactionLineTransfer(AvalaraTransactionLineTransfer $avalaraTransactionLineTransfer): ?string
     {
-        /** @var \Avalara\TransactionLineDetailModel[] $avalaraTransactionLineDetailModels */
+        /** @var array<\Avalara\TransactionLineDetailModel> $avalaraTransactionLineDetailModels */
         $avalaraTransactionLineDetailModels = $this->utilEncodingService->decodeJson(
             $avalaraTransactionLineTransfer->getDetailsOrFail(),
-            false
+            false,
         );
 
         if (!$avalaraTransactionLineDetailModels) {
@@ -164,7 +164,7 @@ class MultiAddressShipmentProductOptionAvalaraTaxCalculator extends AbstractProd
     }
 
     /**
-     * @param string[] $zipCodeRegionNameMap
+     * @param array<string> $zipCodeRegionNameMap
      * @param string $itemShipmentAddressZipCode
      * @param \Generated\Shared\Transfer\AvalaraTransactionLineTransfer $avalaraTransactionLineTransfer
      *
