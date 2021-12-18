@@ -41,7 +41,7 @@ class AvalaraTaxProductOptionBusinessFactory extends AbstractBusinessFactory
     {
         return new SingleAddressShipmentProductOptionAvalaraTaxCalculator(
             $this->getMoneyFacade(),
-            $this->getUtilEncodingService()
+            $this->getUtilEncodingService(),
         );
     }
 
@@ -52,7 +52,7 @@ class AvalaraTaxProductOptionBusinessFactory extends AbstractBusinessFactory
     {
         return new MultiAddressShipmentProductOptionAvalaraTaxCalculator(
             $this->getMoneyFacade(),
-            $this->getUtilEncodingService()
+            $this->getUtilEncodingService(),
         );
     }
 

@@ -31,14 +31,35 @@ class AvalaraTaxProductOptionFacadeTest extends Unit
 {
     /**
      * @uses \Spryker\Shared\Price\PriceConfig::PRICE_MODE_GROSS
+     *
+     * @var string
      */
     protected const PRICE_MODE_GROSS = 'GROSS_MODE';
 
+    /**
+     * @var string
+     */
     protected const TEST_PRODUCT_OPTION_SKU = 'test-product-option-sku';
+
+    /**
+     * @var string
+     */
     protected const TEST_ITEM_SKU = 'test-item-sku';
+
+    /**
+     * @var int
+     */
     protected const TEST_PRODUCT_OPTION_PRICE = 111;
+
+    /**
+     * @var string
+     */
     protected const TEST_ZIP_CODE = '48201';
     protected const TEST_PRODUCT_OPTION_TAX = 18.829999999999998;
+
+    /**
+     * @var string
+     */
     protected const TEST_AVALARA_TAX_CODE = 'TESTCODE';
 
     /**
@@ -61,14 +82,14 @@ class AvalaraTaxProductOptionFacadeTest extends Unit
         // Act
         $avalaraCreateTransactionRequestTransfer = $this->tester->getFacade()->expandAvalaraCreateTransactionRequestWithProductOptions(
             $avalaraCreateTransactionRequestTransfer,
-            $calculableObjectTransfer
+            $calculableObjectTransfer,
         );
 
         // Assert
         $this->assertGreaterThanOrEqual(1, $avalaraCreateTransactionRequestTransfer->getTransaction()->getLines()->count());
         $avalaraLineItemTransfer = $this->findProductOptionAvalaraLineItemTransfer(
             static::TEST_PRODUCT_OPTION_SKU,
-            $avalaraCreateTransactionRequestTransfer
+            $avalaraCreateTransactionRequestTransfer,
         );
         $this->assertNotNull($avalaraLineItemTransfer);
         $this->assertTrue($avalaraLineItemTransfer->getAmount()->equals(1.11));
@@ -90,7 +111,7 @@ class AvalaraTaxProductOptionFacadeTest extends Unit
         // Act
         $calculableObjectTransfer = $this->tester->getFacade()->calculateProductOptionTax(
             $calculableObjectTransfer,
-            $avalaraCreateTransactionResponseTransfer
+            $avalaraCreateTransactionResponseTransfer,
         );
 
         // Assert
@@ -114,7 +135,7 @@ class AvalaraTaxProductOptionFacadeTest extends Unit
         // Act
         $calculableObjectTransfer = $this->tester->getFacade()->calculateProductOptionTax(
             $calculableObjectTransfer,
-            $avalaraCreateTransactionResponseTransfer
+            $avalaraCreateTransactionResponseTransfer,
         );
 
         // Assert

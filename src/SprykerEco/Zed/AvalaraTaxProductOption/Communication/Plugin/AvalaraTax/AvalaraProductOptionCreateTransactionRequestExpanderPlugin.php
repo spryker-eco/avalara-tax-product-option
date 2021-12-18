@@ -37,7 +37,7 @@ class AvalaraProductOptionCreateTransactionRequestExpanderPlugin extends Abstrac
     ): AvalaraCreateTransactionRequestTransfer {
         return $this->getFacade()->expandAvalaraCreateTransactionRequestWithProductOptions(
             $avalaraCreateTransactionRequestTransfer,
-            $calculableObjectTransfer
+            $calculableObjectTransfer,
         );
     }
 }

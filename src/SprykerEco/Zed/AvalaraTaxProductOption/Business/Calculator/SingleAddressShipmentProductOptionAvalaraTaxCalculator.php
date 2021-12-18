@@ -24,7 +24,7 @@ class SingleAddressShipmentProductOptionAvalaraTaxCalculator extends AbstractPro
         AvalaraCreateTransactionResponseTransfer $avalaraCreateTransactionResponseTransfer
     ): CalculableObjectTransfer {
         $productOptionAvalaraTransactionLineTransfersMappedByItemSkuAndProductOptionSku = $this->getProductOptionAvalaraTransactionLineTransfersIndexedByItemSkuAndProductOptionSku(
-            $avalaraCreateTransactionResponseTransfer->getTransactionOrFail()->getLines()
+            $avalaraCreateTransactionResponseTransfer->getTransactionOrFail()->getLines(),
         );
 
         foreach ($calculableObjectTransfer->getItems() as $itemTransfer) {
@@ -35,7 +35,7 @@ class SingleAddressShipmentProductOptionAvalaraTaxCalculator extends AbstractPro
 
             $this->calculateTaxForProductOptions(
                 $productOptionTransfers,
-                $productOptionAvalaraTransactionLineTransfersMappedByItemSkuAndProductOptionSku[$itemTransfer->getSkuOrFail()]
+                $productOptionAvalaraTransactionLineTransfersMappedByItemSkuAndProductOptionSku[$itemTransfer->getSkuOrFail()],
             );
 
             $this->setDefaultZeroTaxRateForProductOptions($itemTransfer);
@@ -45,8 +45,8 @@ class SingleAddressShipmentProductOptionAvalaraTaxCalculator extends AbstractPro
     }
 
     /**
-     * @param \ArrayObject|\Generated\Shared\Transfer\ProductOptionTransfer[] $productOptionTransfers
-     * @param \Generated\Shared\Transfer\AvalaraTransactionLineTransfer[] $productOptionAvalaraTransactionLineTransfersMappedBySku
+     * @param \Generated\Shared\Transfer\ProductOptionTransfer[]|\ArrayObject $productOptionTransfers
+     * @param array<\Generated\Shared\Transfer\AvalaraTransactionLineTransfer> $productOptionAvalaraTransactionLineTransfersMappedBySku
      *
      * @return void
      */

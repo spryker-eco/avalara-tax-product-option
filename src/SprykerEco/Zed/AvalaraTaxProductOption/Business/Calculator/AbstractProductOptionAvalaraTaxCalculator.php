@@ -51,9 +51,9 @@ abstract class AbstractProductOptionAvalaraTaxCalculator implements ProductOptio
     ): CalculableObjectTransfer;
 
     /**
-     * @param \ArrayObject|\Generated\Shared\Transfer\AvalaraTransactionLineTransfer[] $avalaraTransactionLineTransfers
+     * @param \Generated\Shared\Transfer\AvalaraTransactionLineTransfer[]|\ArrayObject $avalaraTransactionLineTransfers
      *
-     * @return \Generated\Shared\Transfer\AvalaraTransactionLineTransfer[][]
+     * @return array<array<\Generated\Shared\Transfer\AvalaraTransactionLineTransfer>>
      */
     protected function getProductOptionAvalaraTransactionLineTransfersIndexedByItemSkuAndProductOptionSku(ArrayObject $avalaraTransactionLineTransfers): array
     {
@@ -80,7 +80,7 @@ abstract class AbstractProductOptionAvalaraTaxCalculator implements ProductOptio
     {
         $taxRateSum = 0.0;
 
-        /** @var \Avalara\TransactionLineDetailModel[] $transactionLineDetailModels */
+        /** @var array<\Avalara\TransactionLineDetailModel> $transactionLineDetailModels */
         $transactionLineDetailModels = $this->utilEncodingService->decodeJson($transactionLineDetails, false);
         foreach ($transactionLineDetailModels as $transactionLineDetailModel) {
             $taxRateSum += $transactionLineDetailModel->rate ?? 0.0;

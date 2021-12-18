@@ -49,7 +49,7 @@ class AvalaraCreateTransactionRequestExpander implements AvalaraCreateTransactio
                 $productOptionTransfers,
                 $avalaraCreateTransactionRequestTransfer,
                 $itemTransfer,
-                $calculableObjectTransfer->getPriceModeOrFail()
+                $calculableObjectTransfer->getPriceModeOrFail(),
             );
         }
 
@@ -57,7 +57,7 @@ class AvalaraCreateTransactionRequestExpander implements AvalaraCreateTransactio
     }
 
     /**
-     * @param \ArrayObject|\Generated\Shared\Transfer\ProductOptionTransfer[] $productOptionTransfers
+     * @param \Generated\Shared\Transfer\ProductOptionTransfer[]|\ArrayObject $productOptionTransfers
      * @param \Generated\Shared\Transfer\AvalaraCreateTransactionRequestTransfer $avalaraCreateTransactionRequestTransfer
      * @param \Generated\Shared\Transfer\ItemTransfer $itemTransfer
      * @param string $priceMode
@@ -75,7 +75,7 @@ class AvalaraCreateTransactionRequestExpander implements AvalaraCreateTransactio
                 $productOptionTransfer,
                 new AvalaraLineItemTransfer(),
                 $itemTransfer,
-                $priceMode
+                $priceMode,
             );
 
             $avalaraCreateTransactionRequestTransfer->getTransactionOrFail()->addLine($avalaraLineItemTransfer);
