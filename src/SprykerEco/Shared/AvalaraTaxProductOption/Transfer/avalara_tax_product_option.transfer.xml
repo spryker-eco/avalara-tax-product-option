@@ -36,7 +36,7 @@
         <property name="sku" type="string"/>
         <property name="productOptions" type="ProductOption[]" singular="productOption"/>
         <property name="shipment" type="Shipment"/>
-        <property name="warehouse" type="Stock"/>
+        <property name="warehouse" type="Stock" strict="true"/>
     </transfer>
 
     <transfer name="AvalaraTransaction">
